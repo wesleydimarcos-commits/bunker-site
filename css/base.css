@@ -14,7 +14,7 @@
   --f-corpo: "Barlow", "Helvetica Neue", Arial, sans-serif;
   --f-util: "IBM Plex Mono", ui-monospace, Menlo, monospace;
 
-  --largura: 90rem;
+  --largura: 120rem;
   --gutter: clamp(1rem, 4vw, 2.5rem);
   color-scheme: dark;
 }
