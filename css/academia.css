@@ -168,3 +168,27 @@ form.form { display: grid; gap: 1.1rem; background: var(--concreto); border: 1px
 .jornada .quando { font-family: var(--f-util); font-size: .75rem; letter-spacing: .12em; text-transform: uppercase; color: var(--oliva); }
 .jornada b { font-size: 1.15rem; }
 .jornada p { color: var(--cinza); }
+
+/* v6: faixa de fatos e imagens/vídeo no topo (a mídia só aparece se config.heroMidia tiver itens) */
+.faixa-fatos { padding-block: 1.5rem; border-top: 1px solid var(--parede); }
+.faixa-fatos .fatos { display: flex; flex-wrap: wrap; gap: 1rem 2.5rem; justify-content: space-between; font-family: var(--f-util); font-size: .85rem; color: var(--cinza); }
+.faixa-fatos .fatos b { color: var(--giz); font-weight: 500; display: block; font-size: 1.05rem; }
+
+.hero-midia { display: none; }
+.hero--midia .hero-midia { display: block; position: relative; aspect-ratio: 16 / 9; background: var(--concreto-2); overflow: hidden; }
+.hero--midia { padding-top: 1.25rem; }
+.hero-slide { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 30%; opacity: 0; transition: opacity 1s ease; }
+.hero-slide.ativo { opacity: 1; }
+.hero-pontos { position: absolute; z-index: 3; right: 1rem; bottom: 1rem; display: flex; gap: .5rem; }
+.hero-pontos button { width: 1.6rem; height: .4rem; border: 0; padding: 0; background: rgba(255,255,255,.55); cursor: pointer; }
+.hero-pontos button[aria-current="true"] { background: var(--oliva); }
+.hero-pontos button:focus-visible { outline: 2px solid var(--oliva); outline-offset: 3px; }
+.hero-legenda { position: absolute; z-index: 3; left: 1rem; bottom: 1rem; font-family: var(--f-util); font-size: .7rem; letter-spacing: .08em; text-transform: uppercase; color: #fff; background: rgba(14,14,13,.7); padding: .2rem .5rem; }
+
+@media (min-width: 64rem) {
+  .hero--midia { padding-block: clamp(3rem, 6vw, 5rem); }
+  .hero--midia .wrap { grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); grid-template-rows: auto; align-items: center; }
+  .hero--midia .hero-titulo { grid-column: 1; grid-row: 1; }
+  .hero--midia .hero-texto { grid-column: 1; grid-row: 2; }
+  .hero--midia .hero-midia { grid-column: 2; grid-row: 1 / span 2; }
+}
