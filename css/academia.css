@@ -168,3 +168,18 @@ form.form { display: grid; gap: 1.1rem; background: var(--concreto); border: 1px
 .jornada .quando { font-family: var(--f-util); font-size: .75rem; letter-spacing: .12em; text-transform: uppercase; color: var(--oliva); }
 .jornada b { font-size: 1.15rem; }
 .jornada p { color: var(--cinza); }
+
+/* v6: imagens e vídeo no fundo do topo (só aparece se config.heroMidia tiver itens) */
+.hero-midia { display: none; }
+.hero--midia .hero-midia { display: block; position: absolute; inset: 0; z-index: 0; background: var(--concreto); }
+.hero--midia .hero-midia::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(14,14,13,.92) 0%, rgba(14,14,13,.72) 55%, rgba(14,14,13,.45) 100%); }
+.hero--midia .wrap { position: relative; z-index: 2; }
+.hero-slide { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 1s ease; }
+.hero-slide.ativo { opacity: 1; }
+.hero-pontos { position: absolute; z-index: 3; right: var(--gutter); bottom: 1rem; display: flex; gap: .5rem; }
+.hero-pontos button { width: 1.6rem; height: .4rem; border: 0; padding: 0; background: rgba(236,235,228,.35); cursor: pointer; }
+.hero-pontos button[aria-current="true"] { background: var(--oliva); }
+.hero-pontos button:focus-visible { outline: 2px solid var(--oliva); outline-offset: 3px; }
+@media (max-width: 52rem) {
+  .hero--midia .hero-midia::after { background: rgba(14,14,13,.78); }
+}

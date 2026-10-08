@@ -138,6 +138,70 @@
   $("cnpj").textContent = B.cnpj;
   $("ano").textContent = new Date().getFullYear();
 
+  // Fundo do topo: alterna imagens e vídeos de B.heroMidia
+  (function () {
+    var itens = B.heroMidia || [];
+    var hero = $("hero"), caixa = $("hero-midia");
+    if (!itens.length || !hero || !caixa) return;
+    hero.classList.add("hero--midia");
+    var reduz = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    var multi = itens.length > 1 && !reduz;
+    var slides = itens.map(function (it, i) {
+      var el;
+      if (it.tipo === "video") {
+        el = document.createElement("video");
+        el.muted = true; el.defaultMuted = true; el.playsInline = true; el.setAttribute("playsinline", "");
+        el.preload = i === 0 ? "auto" : "metadata";
+        el.loop = !multi;
+        if (it.poster) el.poster = it.poster;
+        el.src = it.arquivo;
+      } else {
+        el = document.createElement("img");
+        el.alt = ""; el.decoding = "async";
+        if (i > 0) el.loading = "lazy";
+        el.src = it.arquivo;
+      }
+      el.className = "hero-slide";
+      caixa.appendChild(el);
+      return el;
+    });
+    var atual = 0, timer = null;
+    var pontos = document.createElement("div");
+    pontos.className = "hero-pontos";
+    var mostrar = function (n) {
+      clearTimeout(timer);
+      slides[atual].classList.remove("ativo");
+      if (slides[atual].pause) slides[atual].pause();
+      atual = n;
+      var el = slides[atual];
+      el.classList.add("ativo");
+      Array.prototype.forEach.call(pontos.children, function (b, i) {
+        if (i === atual) b.setAttribute("aria-current", "true"); else b.removeAttribute("aria-current");
+      });
+      if (el.play) { try { el.currentTime = 0; var r = el.play(); if (r && r.catch) r.catch(function () {}); } catch (e) {} }
+      if (multi) {
+        var espera = el.tagName === "VIDEO" ? 15000 : (B.heroIntervalo || 6000);
+        timer = setTimeout(proximo, espera);
+        if (el.tagName === "VIDEO") el.onended = function () { clearTimeout(timer); proximo(); };
+      }
+    };
+    var proximo = function () { mostrar((atual + 1) % slides.length); };
+    if (multi) {
+      itens.forEach(function (it, i) {
+        var b = document.createElement("button");
+        b.type = "button"; b.setAttribute("aria-label", "Mostrar imagem " + (i + 1));
+        b.addEventListener("click", function () { mostrar(i); });
+        pontos.appendChild(b);
+      });
+      caixa.parentNode.appendChild(pontos);
+      document.addEventListener("visibilitychange", function () {
+        if (document.hidden) clearTimeout(timer); else mostrar(atual);
+      });
+    }
+    slides[0].classList.add("ativo");
+    mostrar(0);
+  })();
+
   // Fatos do hero
   var menor = Math.min.apply(null, B.mensalidades.map(function (m) { return m.valor; }));
   $("fatos").innerHTML =

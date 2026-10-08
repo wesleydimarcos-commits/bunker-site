@@ -37,6 +37,13 @@ window.BUNKER = {
   ],
   descontoBimestral: 5,                    // % sobre a mensalidade do plano
   descontoGrupo: 5,                        // % para cada participante (casal, família, amigos)
+  // Fundo do topo: imagens e vídeos que se alternam. Vazio = topo sem mídia.
+  // Coloque os arquivos em img/ e liste aqui, na ordem de exibição:
+  //   { tipo: "imagem", arquivo: "img/topo-1.jpg", alt: "Descrição curta" }
+  //   { tipo: "video",  arquivo: "img/topo-2.mp4", poster: "img/topo-2.jpg" }
+  // Imagens: 1920 px de largura, até 300 KB cada. Vídeos: MP4 sem áudio, até 10 s e 3 MB.
+  heroMidia: [],
+  heroIntervalo: 6000,                     // ms que cada imagem fica na tela
   // A loja entra depois: ao ativar, o link do menu aponta para /loja/
   loja: { ativa: false, nome: "Bunker Sport Nutrition", url: "loja/" }
 };
