@@ -193,10 +193,15 @@
         b.addEventListener("click", function () { mostrar(i); });
         pontos.appendChild(b);
       });
-      caixa.parentNode.appendChild(pontos);
+      caixa.appendChild(pontos);
       document.addEventListener("visibilitychange", function () {
         if (document.hidden) clearTimeout(timer); else mostrar(atual);
       });
+    }
+    if (B.heroLegenda) {
+      var leg = document.createElement("span");
+      leg.className = "hero-legenda"; leg.textContent = B.heroLegenda;
+      caixa.appendChild(leg);
     }
     slides[0].classList.add("ativo");
     mostrar(0);
