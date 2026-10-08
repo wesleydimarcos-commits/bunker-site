@@ -73,6 +73,8 @@ p { margin: 0; }
 .menu .btn:hover { color: var(--oliva); }
 .menu .em-breve { font-family: var(--f-util); font-size: .65rem; color: var(--oliva); margin-left: .3rem; }
 @media (max-width: 52rem) { .menu a:not(.btn) { display: none; } }
+/* telas grandes: logo e menu agrupados no centro do cabeçalho */
+@media (min-width: 64rem) { .topo .wrap { justify-content: center; gap: clamp(3rem, 8vw, 10rem); } }
 
 /* Rodapé */
 .rodape { border-top: 1px solid var(--parede); padding-block: 2.5rem; color: var(--cinza); font-size: .95rem; }
