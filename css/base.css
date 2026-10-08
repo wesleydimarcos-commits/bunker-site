@@ -1,0 +1,92 @@
+/* Base compartilhada entre academia e loja (tokens, tipografia, botões, layout).
+   Layout: faixas horizontais de concreto, conteúdo alinhado à esquerda em grade de 12 colunas. */
+:root {
+  --concreto: #0e0e0d;      /* fundo, próximo do preto do logo */
+  --concreto-2: #171815;    /* faixas alternadas */
+  --parede: #2a2c25;        /* bordas, divisórias */
+  --giz: #ecebe4;           /* texto principal */
+  --cinza: #a6a89b;         /* texto secundário */
+  --oliva: #97a65e;         /* destaque: verde-oliva do logo */
+  --oliva-escuro: #10130a;  /* texto sobre oliva */
+  --erro: #ff8a7a;
+
+  --f-display: "Saira Stencil One", "Impact", "Arial Narrow", sans-serif;
+  --f-corpo: "Barlow", "Helvetica Neue", Arial, sans-serif;
+  --f-util: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+
+  --largura: 90rem;
+  --gutter: clamp(1rem, 4vw, 2.5rem);
+  color-scheme: dark;
+}
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; animation: none !important; } }
+body {
+  margin: 0; background: var(--concreto); color: var(--giz);
+  font-family: var(--f-corpo); font-size: 1.0625rem; line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+img { max-width: 100%; display: block; }
+[hidden] { display: none !important; }
+a { color: inherit; }
+:focus-visible { outline: 2px solid var(--oliva); outline-offset: 3px; }
+
+.wrap { max-width: var(--largura); margin-inline: auto; padding-inline: var(--gutter); }
+.faixa { padding-block: clamp(3.5rem, 8vw, 6rem); border-top: 1px solid var(--parede); }
+.faixa--alt { background: var(--concreto-2); }
+
+h1, h2, h3 { font-family: var(--f-display); font-weight: 400; line-height: 1; margin: 0; text-wrap: balance; letter-spacing: .01em; }
+h2 { font-size: clamp(2.2rem, 5.5vw, 3.6rem); }
+h3 { font-size: 1.6rem; }
+p { margin: 0; }
+.rotulo {
+  font-family: var(--f-util); font-size: .75rem; letter-spacing: .14em; text-transform: uppercase; color: var(--oliva);
+}
+.lead { color: var(--cinza); max-width: 38rem; font-size: 1.125rem; }
+.cab-secao { display: grid; gap: .9rem; margin-bottom: clamp(2rem, 5vw, 3rem); }
+
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: .5rem;
+  font-family: var(--f-corpo); font-weight: 700; font-size: 1rem; letter-spacing: .06em; text-transform: uppercase;
+  padding: .95rem 1.5rem; border: 2px solid var(--oliva); text-decoration: none; cursor: pointer;
+  background: var(--oliva); color: var(--oliva-escuro); transition: background .15s, color .15s;
+}
+.btn:hover { background: transparent; color: var(--oliva); }
+.btn--vazado { background: transparent; color: var(--giz); border-color: var(--giz); }
+.btn--vazado:hover { background: var(--giz); color: var(--concreto); }
+
+/* Faixa de segurança (listras diagonais) usada como marca do Bunker */
+.listra {
+  height: .5rem;
+  background: repeating-linear-gradient(-45deg, var(--oliva) 0 .75rem, var(--concreto) .75rem 1.5rem);
+}
+
+/* Cabeçalho */
+.topo { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 10; background: var(--concreto); border-bottom: 1px solid var(--parede); }
+.topo .wrap { display: flex; align-items: center; justify-content: space-between; gap: 1rem; min-height: 4.6rem; }
+.marca { font-family: var(--f-display); font-size: 1.5rem; text-decoration: none; letter-spacing: .02em; }
+.marca span { color: var(--oliva); }
+.menu { display: flex; gap: 1.5rem; align-items: center; }
+.menu a { text-decoration: none; font-weight: 600; font-size: .95rem; color: var(--cinza); }
+.menu a:hover { color: var(--giz); }
+.menu .btn { padding: .55rem 1rem; font-size: .85rem; color: var(--oliva-escuro); }
+.menu .btn:hover { color: var(--oliva); }
+.menu .em-breve { font-family: var(--f-util); font-size: .65rem; color: var(--oliva); margin-left: .3rem; }
+@media (max-width: 52rem) { .menu a:not(.btn) { display: none; } }
+
+/* Rodapé */
+.rodape { border-top: 1px solid var(--parede); padding-block: 2.5rem; color: var(--cinza); font-size: .95rem; }
+.rodape .wrap { display: flex; flex-wrap: wrap; gap: 1.5rem 3rem; justify-content: space-between; }
+
+/* WhatsApp flutuante */
+.zap {
+  position: fixed; right: 1rem; bottom: calc(1rem + env(safe-area-inset-bottom, 0px)); z-index: 20;
+  display: inline-flex; align-items: center; gap: .5rem; padding: .8rem 1.1rem;
+  background: #25d366; color: #06210f; font-weight: 700; text-decoration: none; border-radius: 2rem;
+  box-shadow: 0 .4rem 1.2rem rgba(0,0,0,.45);
+}
+.zap svg { width: 1.3rem; height: 1.3rem; fill: currentColor; }
+@media (max-width: 30rem) { .zap span { display: none; } }
+.rodape .credito { flex-basis: 100%; font-family: var(--f-util); font-size: .8rem; }
+.marca { display: block; line-height: 0; }
+.marca img { height: 3.4rem; width: auto; mix-blend-mode: lighten; }
