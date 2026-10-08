@@ -185,10 +185,17 @@ form.form { display: grid; gap: 1.1rem; background: var(--concreto); border: 1px
 .hero-pontos button:focus-visible { outline: 2px solid var(--oliva); outline-offset: 3px; }
 .hero-legenda { position: absolute; z-index: 3; left: 1rem; bottom: 1rem; font-family: var(--f-util); font-size: .7rem; letter-spacing: .08em; text-transform: uppercase; color: #fff; background: rgba(14,14,13,.7); padding: .2rem .5rem; }
 
+/* v7: no desktop as imagens ocupam o topo inteiro e o texto fica fixo por cima, à esquerda */
 @media (min-width: 64rem) {
-  .hero--midia { padding-block: clamp(3rem, 6vw, 5rem); }
-  .hero--midia .wrap { grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); grid-template-rows: auto; align-items: center; }
-  .hero--midia .hero-titulo { grid-column: 1; grid-row: 1; }
-  .hero--midia .hero-texto { grid-column: 1; grid-row: 2; }
-  .hero--midia .hero-midia { grid-column: 2; grid-row: 1 / span 2; }
+  .hero--midia { padding: 0; min-height: min(46rem, 88vh); display: flex; align-items: center; }
+  .hero--midia .hero-midia { position: absolute; inset: 0; aspect-ratio: auto; z-index: 0; }
+  .hero--midia .hero-midia::after { content: ""; position: absolute; inset: 0; z-index: 2; pointer-events: none;
+    background: linear-gradient(90deg, rgba(14,14,13,1) 0%, rgba(14,14,13,.96) 28%, rgba(14,14,13,.55) 40%, rgba(14,14,13,0) 55%),
+                linear-gradient(0deg, rgba(14,14,13,.6) 0%, rgba(14,14,13,0) 25%); }
+  .hero--midia .hero-slide { left: 30%; width: 70%; object-position: center 35%; }
+  .hero--midia h1 { font-size: clamp(3rem, 5.2vw, 5.6rem); }
+  .hero--midia .wrap { display: block; width: 100%; padding-block: clamp(3rem, 6vw, 5rem); }
+  .hero--midia .hero-titulo, .hero--midia .hero-texto { max-width: 38rem; position: relative; z-index: 4; }
+  .hero--midia .hero-texto { margin-top: 1.5rem; }
+  .hero--midia .hero-pontos { right: clamp(1rem, 3vw, 2.5rem); bottom: 1.5rem; z-index: 5; }
 }

@@ -47,7 +47,7 @@ window.BUNKER = {
     { tipo: "imagem", arquivo: "img/topo-2.jpg" },
     { tipo: "imagem", arquivo: "img/topo-3.jpg" }
   ],
-  heroLegenda: "Imagens ilustrativas",     // aparece no canto da imagem; apague o texto para remover
+  heroLegenda: "",     // aparece no canto da imagem; apague o texto para remover
   heroIntervalo: 6000,                     // ms que cada imagem fica na tela
   // A loja entra depois: ao ativar, o link do menu aponta para /loja/
   loja: { ativa: false, nome: "Bunker Sport Nutrition", url: "loja/" }
