@@ -134,6 +134,8 @@
   $("zap-flutuante").href = zapLink("Olá! Quero saber mais sobre a " + B.marca + ".");
   $("cta-loja").href = zapLink("Quero ser avisado quando a loja " + B.loja.nome + " abrir.");
   $("cta-loja").target = "_blank";
+  $("cta-arena").href = zapLink("Quero ser avisado sobre a Arena Bunker (corrida de obstáculos).");
+  $("cta-arena").target = "_blank";
   if (B.loja.ativa) { $("link-loja").href = B.loja.url; $("link-loja").innerHTML = "Loja"; }
   $("cnpj").textContent = B.cnpj;
   $("ano").textContent = new Date().getFullYear();
