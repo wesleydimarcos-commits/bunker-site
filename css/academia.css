@@ -199,3 +199,10 @@ form.form { display: grid; gap: 1.1rem; background: var(--concreto); border: 1px
   .hero--midia .hero-texto { margin-top: 1.5rem; }
   .hero--midia .hero-pontos { right: clamp(1rem, 3vw, 2.5rem); bottom: 1.5rem; z-index: 5; }
 }
+
+/* Arena Bunker (conceito, em validação) */
+.arena { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: clamp(1.5rem, 4vw, 4rem); align-items: center; }
+.arena-fig { margin: 0; }
+.arena-fig img { width: 100%; height: auto; display: block; }
+.arena-fig figcaption { font-family: var(--f-util); font-size: .75rem; letter-spacing: .08em; text-transform: uppercase; color: var(--cinza); padding-top: .6rem; }
+@media (max-width: 52rem) { .arena { grid-template-columns: 1fr; } }
