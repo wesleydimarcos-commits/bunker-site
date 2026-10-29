@@ -1,0 +1,4 @@
+# Site da Arena Bunker (arena.bunkersn.com.br). Projeto Netlify próprio, com
+# "Base directory" = arena neste mesmo repositório. Estático, sem build.
+[build]
+  publish = "."

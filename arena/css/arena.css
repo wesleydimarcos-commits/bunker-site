@@ -1,0 +1,37 @@
+/* Arena Bunker: reaproveita tokens e componentes de base.css */
+.hero-arena { padding-block: clamp(3.5rem, 9vw, 7rem) clamp(3rem, 7vw, 5rem); }
+.hero-arena .wrap { display: grid; gap: 2rem; }
+.hero-arena h1 { font-size: clamp(3rem, 9vw, 7rem); line-height: .9; }
+.hero-arena h1 em { font-style: normal; color: var(--oliva); display: block; }
+.hero-arena .texto { display: grid; gap: 1.5rem; align-content: center; }
+.hero-arena .acoes { display: flex; flex-wrap: wrap; gap: 1rem; }
+.hero-arena figure { margin: 0; }
+.hero-arena img, .percurso-fig img { width: 100%; height: auto; display: block; }
+figcaption { font-family: var(--f-util); font-size: .75rem; letter-spacing: .08em; text-transform: uppercase; color: var(--cinza); padding-top: .6rem; }
+@media (min-width: 64rem) { .hero-arena .wrap { grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); align-items: center; gap: clamp(2rem, 5vw, 5rem); } }
+
+.valores { display: grid; grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr)); gap: 1.5rem; }
+.valores div { border-top: 2px solid var(--oliva); padding-top: .8rem; }
+.valores b { display: block; font-family: var(--f-display); font-size: 1.5rem; font-weight: 400; }
+.valores span { color: var(--cinza); }
+
+.obstaculos { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr)); gap: 1rem 2rem; counter-reset: obs; }
+.obstaculos li { display: grid; grid-template-columns: 2.4rem 1fr; gap: .2rem .8rem; padding: .9rem 0; border-bottom: 1px solid var(--parede); }
+.obstaculos li::before { counter-increment: obs; content: counter(obs); grid-row: span 2; font-family: var(--f-display); font-size: 1.8rem; color: var(--oliva); line-height: 1; }
+.obstaculos b { font-weight: 700; }
+.obstaculos span { color: var(--cinza); font-size: .95rem; }
+
+.status { width: 100%; border-collapse: collapse; }
+.status th, .status td { text-align: left; padding: .8rem 0; border-bottom: 1px solid var(--parede); vertical-align: top; }
+.status th { font-weight: 600; width: 40%; color: var(--cinza); }
+.status td { font-family: var(--f-util); }
+.status .def { color: var(--oliva); }
+
+.faq details { border-bottom: 1px solid var(--parede); padding: 1rem 0; }
+.faq summary { cursor: pointer; font-weight: 700; }
+.faq details p { color: var(--cinza); margin-top: .6rem; max-width: 46rem; }
+
+.duas-colunas { display: grid; gap: 2rem; }
+@media (min-width: 52rem) { .duas-colunas { grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: 4rem; align-items: start; } }
+.cta-faixa { display: flex; flex-wrap: wrap; gap: 1.5rem 2rem; align-items: end; justify-content: space-between; }
+.menu a.ativo-fake { color: var(--giz); }
