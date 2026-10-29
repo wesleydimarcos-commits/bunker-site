@@ -1,0 +1,12 @@
+# arena.bunkersn.com.br serve a pasta /arena deste mesmo projeto.
+# http e https precisam de regras separadas.
+https://arena.bunkersn.com.br/ /arena/index.html 200!
+https://arena.bunkersn.com.br/css/arena.css /arena/css/arena.css 200!
+https://arena.bunkersn.com.br/js/arena.js /arena/js/arena.js 200!
+https://arena.bunkersn.com.br/img/logo-arena.jpg /arena/img/logo-arena.jpg 200!
+https://arena.bunkersn.com.br/img/percurso.jpg /arena/img/percurso.jpg 200!
+http://arena.bunkersn.com.br/ /arena/index.html 200!
+http://arena.bunkersn.com.br/css/arena.css /arena/css/arena.css 200!
+http://arena.bunkersn.com.br/js/arena.js /arena/js/arena.js 200!
+http://arena.bunkersn.com.br/img/logo-arena.jpg /arena/img/logo-arena.jpg 200!
+http://arena.bunkersn.com.br/img/percurso.jpg /arena/img/percurso.jpg 200!
